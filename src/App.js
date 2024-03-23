@@ -10,10 +10,10 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
+        <Route exact path="/" element={<NewsApi />} />
         <Route exact path="/news-org" element={<NewsOrg />} />
         <Route exact path="/api-new" element={<NewsApi />} />
         <Route exact path="/setting" element={<Setting />} />
-        
       </Routes>
     </div>
   );

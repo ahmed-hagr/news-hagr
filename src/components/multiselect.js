@@ -66,19 +66,19 @@ export default function MultipleSelectChip({
           input={<OutlinedInput id="select-multiple-chip" label={label} />}
           renderValue={(selected) => (
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-              {selected.map((value) => (
-                <Chip key={value} label={chipLabelRenderer(value)} />
+              {selected.map((value,index) => (
+                <Chip key={index} label={chipLabelRenderer(value)} />
               ))}
             </Box>
           )}
           MenuProps={MenuProps}
         >
-          {data.map((obj) => {
+          {data.map((obj,index) => {
             // Assuming obj has a unique identifier for a key. Adjust as necessary.
             const value = obj.domain ? obj.domain : obj;
             return (
               <MenuItem
-                key={value} // Use a unique identifier or value as the key
+                key={index} // Use a unique identifier or value as the key
                 value={value}
                 style={getStyles(value, personName, theme)}
               >

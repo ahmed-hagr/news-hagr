@@ -43,8 +43,8 @@ const Navbar = () => {
       onClick={handleDrawerToggle}
     >
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item.text} disablePadding>
+        {navItems.map((item,index) => (
+          <ListItem key={index} disablePadding>
             <ListItemButton
               component={RouterLink}
               to={item.link}
@@ -82,9 +82,9 @@ const Navbar = () => {
             news feed
           </Typography>
           <Box sx={{ display: { xs: "none", md: "flex" }, ml: "auto" }}>
-            {navItems.map((item) => (
+            {navItems.map((item,index) => (
               <Button
-                key={item.text}
+                key={index}
                 sx={{ color: "#fff", textTransform: "none" }}
               >
                 <RouterLink

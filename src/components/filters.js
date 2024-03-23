@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { TextField, MenuItem, FormControl, InputLabel, Select } from "@mui/material";
+import {
+  TextField,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Select,
+} from "@mui/material";
 import moment from "moment";
 import { fetchNewsAsync } from "../store/newsorgSlice";
 import { fetchNewsaAPIAsync } from "../store/newsapiSlice";
@@ -13,21 +19,25 @@ const FilterComponent = ({ sources, onSearch, view, categories }) => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [selectedSource, setSelectedSource] = useState("");
   const [selectedDate, setSelectedDate] = useState(moment());
-  const [formattedDate, setFormattedDate] = useState(moment(selectedDate).format("YYYY-MM-DD"));
+  const [formattedDate, setFormattedDate] = useState(
+    moment(selectedDate).format("YYYY-MM-DD")
+  );
   const [source, setSource] = useState(undefined);
 
   const handleFilterRequest = (data) => {
     if (view === "news-org") {
       dispatch(fetchNewsAsync(data));
     } else {
-      dispatch(fetchNewsaAPIAsync({
-        categories: data.category,
-        locale: data.country,
-        search: undefined,
-        published_before: data.from,
-        domains: data.domains,
-        type: "all/headlines",
-      }));
+      dispatch(
+        fetchNewsaAPIAsync({
+          categories: data.category,
+          locale: data.country,
+          search: undefined,
+          published_before: data.from,
+          domains: data.domains,
+          type: "all/headlines",
+        })
+      );
     }
   };
 
@@ -86,8 +96,8 @@ const FilterComponent = ({ sources, onSearch, view, categories }) => {
             label="Category"
             onChange={handleCategoryChange}
           >
-            {categories.map((category) => (
-              <MenuItem key={category} value={category}>
+            {categories.map((category, index) => (
+              <MenuItem key={index} value={category}>
                 {category}
               </MenuItem>
             ))}
@@ -103,7 +113,7 @@ const FilterComponent = ({ sources, onSearch, view, categories }) => {
             onChange={handleSourceChange}
           >
             {sources.map((source, index) => (
-              <MenuItem key={source.url || source.domain || index} value={source.url || source.domain}>
+              <MenuItem key={index} value={source.name || source.domain}>
                 {source.name || source.domain}
               </MenuItem>
             ))}

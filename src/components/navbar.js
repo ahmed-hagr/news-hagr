@@ -13,11 +13,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import SearchBar from "./SearchBar"; // Assuming you have this component
+import SearchBar from "./SearchBar"; 
 import FeedIcon from "@mui/icons-material/Feed";
 import { useTheme } from "@mui/material/styles";
 
-// Define navItems array with your desired navigation items
 const navItems = [
   { text: "news-org", link: "/news-org" },
   { text: "api-new", link: "/api-new" },
@@ -101,7 +100,6 @@ const Navbar = () => {
         </Toolbar>
       </AppBar>
       <Toolbar />{" "}
-      {/* This is to ensure content is not hidden behind the AppBar */}
       <Drawer
         variant="temporary"
         open={mobileOpen}

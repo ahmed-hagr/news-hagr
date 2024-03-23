@@ -39,7 +39,7 @@ const NewsApi = () => {
       })
     );
     dispatch(fetchNewsSourcesAPIAsync());
-  }, [dispatch, favcategories, favsources]); // Adding dependencies to ensure the effect runs correctly
+  }, [dispatch, favcategories, favsources]); 
 
   return (
     <>

@@ -1,4 +1,3 @@
-// newsPreferencesSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 // Helper function to load saved preferences or return initial state

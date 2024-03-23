@@ -11,10 +11,11 @@ const Setting = () => {
     (state) => state.newsPreferences
   );
   const { sources } = useSelector((state) => state.newsApi);
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
-  const [selectedSources, setSelectedSources] = useState(favcategories);
-  const [selectedCategories, setSelectedCategories] = useState(favsources);
+  const [selectedSources, setSelectedSources] = useState(favsources);
+  const [selectedCategories, setSelectedCategories] = useState(favcategories);
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
   const Categories = [
     "general",
     "science",
@@ -27,16 +28,19 @@ const Setting = () => {
     "food",
     "travel",
   ];
+
   useEffect(() => {
-   
     dispatch(fetchNewsSourcesAPIAsync());
   }, [dispatch]);
+
   const handleSourceChange = (data) => {
     setSelectedSources(data);
   };
+
   const handleCategoryChange = (data) => {
     setSelectedCategories(data);
   };
+
   const handleSavePreferences = () => {
     sessionStorage.setItem("selectedSources", JSON.stringify(selectedSources));
     sessionStorage.setItem(
@@ -47,24 +51,26 @@ const Setting = () => {
     dispatch(setCategories(selectedCategories));
     setSnackbarOpen(true);
   };
+
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
     setSnackbarOpen(false);
   };
+
   return (
     <div>
       <MultipleSelectChip
-        selectedData={favsources}
+        selectedData={selectedSources}
         handleChangeData={handleSourceChange}
         label={"Sources"}
         data={sources}
       />
       <MultipleSelectChip
-        selectedData={favcategories}
+        selectedData={selectedCategories}
         handleChangeData={handleCategoryChange}
-        label={"categories"}
+        label={"Categories"}
         data={Categories}
       />
       <Button
@@ -76,7 +82,7 @@ const Setting = () => {
       </Button>
       <Snackbar
         open={snackbarOpen}
-        autoHideDuration={300}
+        autoHideDuration={3000}
         onClose={handleCloseSnackbar}
         message="Preferences saved"
       />

@@ -12,7 +12,14 @@ export const fetchNewsorg = async (
     const response = await axios.get(
       `${process.env.REACT_APP_newsApiorg_Base_url}${type}`,
       {
-        params: { apiKey: process.env.REACT_APP_newsApiorgkey, category, country, q, from, domains },
+        params: {
+          apiKey: process.env.REACT_APP_newsApiorgkey,
+          category,
+          country,
+          q,
+          from,
+          domains,
+        },
       }
     );
     return response.data;
@@ -46,6 +53,8 @@ export const fetchNewsApi = async (
   type
 ) => {
   try {
+    console.log(categories);
+
     const response = await axios.get(
       `${process.env.REACT_APP_newsApi_Base_url}${type}`,
       {

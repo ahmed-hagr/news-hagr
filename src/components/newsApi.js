@@ -30,11 +30,11 @@ const NewsApi = () => {
     dispatch(
       fetchNewsaAPIAsync({
         categories:
-          favcategories?.length > 0 ? favcategories.join('", "') : "general",
+          favcategories?.length > 0 ? favcategories.join(",") : "general",
         locale: undefined,
         search: undefined,
         published_before: undefined,
-        domains: favsources?.length > 0 ? favsources.join('", "') : undefined,
+        domains: favsources?.length > 0 ? favsources.join(",") : undefined,
         type: "all/headlines",
       })
     );
